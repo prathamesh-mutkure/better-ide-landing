@@ -1,98 +1,51 @@
-name: App CI
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    # Run on all branches
-    branches:
-      - "*"
-    # Run only if files modified are not docs
-    paths-ignore:
-      - "*.md"
-  pull_request:
-    # Run on all branches
-    branches:
-      - "*"
-    # Run only if files modified are not docs
-    paths-ignore:
-      - "*.md"
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  buildAndTest:
-    name: Build & Test
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: 🏗 Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: 🏗 Setup Node
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: pnpm
-
-      - name: 🗂️ Install dependencies
-        run: pnpm i
-
-      - name: 🔨 Build
-        run: pnpm build:ci
-
-      - name: 🧪 Test
-        run: pnpm test:ci
-
-      # Upload dist artifacts
-      - uses: actions/upload-artifact@v3
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: dist
-          path: dist/
-
-      # Upload coverage artifacts
-      - uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage/lcov.info
-
-  coverage:
-    name: Coverage Analysis
-    needs: buildAndTest
-    runs-on: ubuntu-latest
-    steps:
-      # Download coverage artifacts
-      - uses: actions/download-artifact@v3
-        with:
-          name: coverage
-
-      - name: 📈 Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: lcov.info
-
-  deploy:
-    name: Deploy
-    # Deploy only for main branch
-    if: github.ref == 'refs/heads/main'
-    needs: buildAndTest
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    # Manual deployment
-    # See https://devblogs.microsoft.com/devops/i-need-manual-approvers-for-github-actions-and-i-got-them-now/
-    environment:
-      name: pchmn.github.io/vite-react-ts-ghactions-template
-      url: https://pchmn.github.io/vite-react-ts-ghactions-template/
-    steps:
-      # Download dist artifacts
-      - uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: dist/
-
-      - name: 🚀 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          # Upload dist repository
+          path: "./dist"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
