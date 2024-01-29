@@ -16,9 +16,8 @@ function App() {
             </span>
           </h1>
 
-          <p className="text-gray-500 text-lg">
-            Leverage the power of the Arweave ecosystem <br /> to build quickly
-            and simply on the permaweb.
+          <p className="text-gray-400 text-2xl">
+            Build fast. Ship fast. Using BetterIDEa.
           </p>
 
           <div className="flex flex-row justify-center items-center gap-5 pt-2">
