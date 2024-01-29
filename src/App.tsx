@@ -91,8 +91,8 @@ function App() {
         </section>
       </div>
 
-      <section id="steps" className="relative flex flex-col gap-20 py-24 px-8">
-        <h2 className="text-4xl font-bold text-center lg:text-left">
+      <section id="steps" className="relative flex flex-col gap-24 py-24 px-8">
+        <h2 className="text-5xl font-bold text-center capitalize">
           Getting started is easy as 1,2,3...
         </h2>
 
@@ -106,6 +106,49 @@ function App() {
           <Card label="Iterate" Icon={Icons.iterate} />
         </div>
       </section>
+
+      <section
+        id="demo"
+        className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
+      >
+        <h2 className="text-5xl font-bold text-center capitalize">Demo</h2>
+
+        <div className="mockup-browser w-full max-w-screen-xl border bg-base-300">
+          <div className="mockup-browser-toolbar">
+            <div className="input">https://ide.betteridea.dev/</div>
+          </div>
+
+          <div className="flex justify-center px-4 py-16 w-full aspect-[16/9] bg-base-200">
+            Demo Here
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+        <aside>
+          <img src="/vite.svg" className="h-20 w-20" />
+          <p className="font-bold">
+            Better IDE. <br />
+            Building on Arweave
+          </p>
+          <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+        </aside>
+
+        <nav>
+          <div className="grid grid-flow-col gap-4">
+            <a href="https://twitter.com/betteridea_dev">
+              <Icons.twitter />
+            </a>
+            <a href="https://discord.gg/nm6VKUQBrA">
+              {/* TODO: Add discord svg */}
+              <Icons.discord />
+            </a>
+            <a href="mailto:hello@betteridea.dev">
+              <Icons.mail />
+            </a>
+          </div>
+        </nav>
+      </footer>
     </main>
   );
 }

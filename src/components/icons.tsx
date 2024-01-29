@@ -42,6 +42,8 @@ import {
   Cloud,
   Bug,
   IterationCw,
+  Mail,
+  Youtube,
   type XIcon as LucideIcon,
 } from "lucide-react";
 
@@ -92,4 +94,6 @@ export const Icons = {
   test: Bug,
   iterate: IterationCw,
   arrowDown: ArrowDown,
+  discord: Youtube,
+  mail: Mail,
 };
