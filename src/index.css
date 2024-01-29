@@ -20,3 +20,7 @@ code {
 #hero {
   background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
 }
+
+#hero .overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 1%, rgb(0, 0, 0, 0) 40%);
+}
