@@ -1,5 +1,3 @@
-import RotatingText from "./components/rotating-text";
-
 function App() {
   return (
     <main className="relative bg-black text-white" data-theme="luxury">
