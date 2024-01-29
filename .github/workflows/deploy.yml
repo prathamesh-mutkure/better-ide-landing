@@ -1,62 +1,98 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: App CI
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
+    # Run on all branches
+    branches:
+      - "*"
+    # Run only if files modified are not docs
+    paths-ignore:
+      - "*.md"
+  pull_request:
+    # Run on all branches
+    branches:
+      - "*"
+    # Run only if files modified are not docs
+    paths-ignore:
+      - "*.md"
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  buildAndTest:
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
+      - uses: actions/checkout@v3
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          # cache: 'npm'
+          cache: pnpm
 
-      -name: Install pnpm
-       run: npm install --global pnpm
-      - name: Cache .pnpm-store
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
+      - name: 🗂️ Install dependencies
+        run: pnpm i
 
-      - name: Install dependencies
-        run: pnpm install
-      - name: Build
-        run: pnpm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: 🔨 Build
+        run: pnpm build:ci
+
+      - name: 🧪 Test
+        run: pnpm test:ci
+
+      # Upload dist artifacts
+      - uses: actions/upload-artifact@v3
         with:
-          # Upload dist repository
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          name: dist
+          path: dist/
+
+      # Upload coverage artifacts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/lcov.info
+
+  coverage:
+    name: Coverage Analysis
+    needs: buildAndTest
+    runs-on: ubuntu-latest
+    steps:
+      # Download coverage artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: coverage
+
+      - name: 📈 Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info
+
+  deploy:
+    name: Deploy
+    # Deploy only for main branch
+    if: github.ref == 'refs/heads/main'
+    needs: buildAndTest
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    # Manual deployment
+    # See https://devblogs.microsoft.com/devops/i-need-manual-approvers-for-github-actions-and-i-got-them-now/
+    environment:
+      name: pchmn.github.io/vite-react-ts-ghactions-template
+      url: https://pchmn.github.io/vite-react-ts-ghactions-template/
+    steps:
+      # Download dist artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
