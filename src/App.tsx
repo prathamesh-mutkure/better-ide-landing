@@ -1,22 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import RotatingText from "./components/rotating-text";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <main className="relative">
+    <main className="relative bg-black text-white" data-theme="night">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
         <header></header>
 
         <section
           id="hero"
-          className="relative flex flex-col flex-auto justify-center items-center gap-5"
+          className="relative flex flex-col text-center flex-auto justify-center items-center gap-5"
         >
-          <h1 className="text-6xl">
-            One stop env for <br /> devs on Arweave
+          <h1 className="text-6xl capitalize font-extrabold">
+            One stop enviornment <br />
+            for devs on Arweave
           </h1>
 
           <h1 className="item-start font-heading text-4xl">
@@ -27,7 +23,7 @@ function App() {
           </h1>
 
           <div className="flex flex-row justify-center items-center gap-5 pt-2">
-            <button>Start Building</button>
+            <button className="btn">Start Building</button>
           </div>
         </section>
       </div>
