@@ -1,7 +1,14 @@
-function Card() {
+import { Icons } from "./components/icons";
+import { type LucideIcon } from "lucide-react";
+
+function Card({ label, Icon }: { label: string; Icon: LucideIcon }) {
   return (
-    <div className="bg-secondary flex flex-col justify-center items-center gap-2 h-28 w-28 cursor-pointer transition-all p-4 rounded-xl border border-white/50">
-      <h3>Test</h3>
+    <div className="bg-transparent flex flex-col justify-center items-center gap-3 h-32 w-32 lg:h-40 lg:w-40 cursor-pointer transition-all p-4 rounded-xl border border-white/50 hover:bg-white/15">
+      <Icon />
+
+      <h3 className="text-lg">{label}</h3>
+
+      <Icons.arrowDown />
     </div>
   );
 }
@@ -85,16 +92,18 @@ function App() {
       </div>
 
       <section id="steps" className="relative flex flex-col gap-20 py-24 px-8">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-4xl font-bold text-center lg:text-left">
           Getting started is easy as 1,2,3...
         </h2>
 
-        <div className="flex flex-row items-center justify-center gap-20">
-          <Card />
-          <div className="w-16 border border-white/80"></div>
-          <Card />
-          <div className="w-16 border border-white/80"></div>
-          <Card />
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+          <Card label="Code" Icon={Icons.code} />
+          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
+          <Card label="Deploy" Icon={Icons.deploy} />
+          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
+          <Card label="Test" Icon={Icons.test} />
+          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
+          <Card label="Iterate" Icon={Icons.iterate} />
         </div>
       </section>
     </main>
