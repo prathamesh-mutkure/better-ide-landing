@@ -2,8 +2,8 @@ function App() {
   return (
     <main className="relative bg-black text-white" data-theme="luxury">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
-        <header className="w-full">
-          <div className="navbar bg-transparent w-full">
+        <header className="w-full fixed top-0 left-0 right-0 z-10">
+          <div className="navbar w-full">
             <div className="navbar-start">
               <div className="dropdown">
                 <div
@@ -23,8 +23,23 @@ function App() {
             <div className="navbar-center hidden lg:flex"></div>
 
             <div className="navbar-end gap-2">
-              <a className="btn">Better IDE</a>
-              <a className="btn">AO Notebook</a>
+              <a
+                href="https://ide.betteridea.dev/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn"
+              >
+                Better IDE
+              </a>
+
+              <a
+                href="https://ide.betteridea.dev/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn"
+              >
+                AO Notebook
+              </a>
             </div>
           </div>
         </header>
@@ -47,7 +62,14 @@ function App() {
           </p>
 
           <div className="flex flex-row justify-center items-center gap-5 pt-2">
-            <button className="btn btn-primary">Start Building</button>
+            <a
+              className="btn btn-primary"
+              href="https://ide.betteridea.dev/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Start Building
+            </a>
           </div>
         </section>
       </div>
