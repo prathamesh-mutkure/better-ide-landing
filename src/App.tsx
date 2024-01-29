@@ -1,9 +1,24 @@
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
+import { cn } from "./lib/utils";
 
-function Card({ label, Icon }: { label: string; Icon: LucideIcon }) {
+function Card({
+  label,
+  Icon,
+  gradient = "",
+}: {
+  label: string;
+  Icon: LucideIcon;
+  gradient?: string;
+}) {
   return (
-    <div className="bg-transparent flex flex-col justify-center items-center gap-3 h-32 w-32 lg:h-40 lg:w-40 cursor-pointer transition-all p-4 rounded-xl border border-white/50 hover:bg-white/15">
+    <div
+      className={cn(
+        "bg-transparent flex flex-col justify-center items-center gap-3 h-32 w-32 lg:h-40 lg:w-40 cursor-pointer transition-all p-4 rounded-2xl hover:bg-white/15",
+        gradient
+      )}
+    >
+      {/* border border-white/50 */}
       <Icon />
 
       <h3 className="text-lg">{label}</h3>
@@ -97,13 +112,29 @@ function App() {
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
-          <Card label="Code" Icon={Icons.code} />
+          <Card
+            label="Code"
+            Icon={Icons.code}
+            gradient="bg-gradient-to-r from-fuchsia-600 to-purple-600"
+          />
           <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card label="Deploy" Icon={Icons.deploy} />
+          <Card
+            label="Deploy"
+            Icon={Icons.deploy}
+            gradient="bg-gradient-to-r from-indigo-400 to-cyan-400"
+          />
           <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card label="Test" Icon={Icons.test} />
+          <Card
+            label="Test"
+            Icon={Icons.test}
+            gradient="bg-gradient-to-r from-cyan-500 to-blue-500"
+          />
           <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card label="Iterate" Icon={Icons.iterate} />
+          <Card
+            label="Iterate"
+            Icon={Icons.iterate}
+            gradient="bg-gradient-to-r from-blue-600 to-violet-600"
+          />
         </div>
       </section>
 
