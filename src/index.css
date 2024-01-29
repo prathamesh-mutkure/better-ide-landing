@@ -16,3 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#hero {
+  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+}
