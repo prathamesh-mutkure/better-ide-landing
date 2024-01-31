@@ -41,12 +41,12 @@ function App() {
                   role="button"
                   className="btn btn-ghost lg:hidden"
                 >
-                  <img className="h-5 w-5" src="/vite.svg" />
+                  <img className="h-5 w-5" src="/logo.png" />
                 </div>
               </div>
 
               <a className="btn btn-ghost text-xl hidden lg:flex">
-                <img className="h-10 w-10" src="/vite.svg" />
+                <img className="h-10 w-10" src="/logo.png" />
               </a>
             </div>
 
@@ -149,15 +149,15 @@ function App() {
             <div className="input">https://ide.betteridea.dev/</div>
           </div>
 
-          <div className="flex justify-center px-4 py-16 w-full aspect-[16/9] bg-base-200">
-            Demo Here
+          <div className="flex justify-center w-full aspect-[16/9] bg-base-200">
+            <iframe src="https://ide.betteridea.dev" className="w-full h-full"></iframe>
           </div>
         </div>
       </section>
 
       <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
         <aside>
-          <img src="/vite.svg" className="h-20 w-20" />
+          <img src="/logo.png" className="h-20 w-20" />
           <p className="font-bold">
             Better IDE. <br />
             Building on Arweave
