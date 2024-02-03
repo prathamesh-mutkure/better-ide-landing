@@ -18,7 +18,8 @@ code {
 }
 
 #hero {
-  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+  /* background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png"); */
+  background-image: url("/bg.png");
 }
 
 #hero .overlay {

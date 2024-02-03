@@ -44,6 +44,7 @@ import {
   IterationCw,
   Mail,
   Youtube,
+  Github,
   type XIcon as LucideIcon,
   LucideProps,
 } from "lucide-react";
@@ -97,6 +98,7 @@ export const Icons = {
   arrowDown: ArrowDown,
   youtube: Youtube,
   mail: Mail,
+  github: Github,
 
   discord: (props: LucideProps) => (
     <svg

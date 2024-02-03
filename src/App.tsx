@@ -47,6 +47,7 @@ function App() {
 
               <a className="btn btn-ghost text-xl hidden lg:flex">
                 <img className="h-10 w-10" src="/logo.png" />
+                BetterIDEa
               </a>
             </div>
 
@@ -80,6 +81,27 @@ function App() {
         >
           <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black bg-[linear-gradient(0deg,rgba(0,0,0,1)_25%,rgba(0,0,0,0)_80%)]"></div>
 
+          <div className="flex flex-row gap-4">
+            <a
+              className="rounded-2xl bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+              href="https://twitter.com/betteridea_dev"
+              target="_blank"
+              rel="noreferer"
+            >
+              <Icons.twitter className="h-4 w-4 text-black" />
+            </a>
+
+            <a
+              className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+              href="https://twitter.com/betteridea_dev"
+              target="_blank"
+              rel="noreferer"
+            >
+              <Icons.discord className="h-4 w-4 text-black" />
+              discord
+            </a>
+          </div>
+
           <h1 className="text-6xl capitalize font-extrabold z-20">
             One stop enviornment <br />
             for devs on{" "}
@@ -88,10 +110,10 @@ function App() {
             </span>
           </h1>
 
-          <p className="text-gray-400 text-2xl capitalize z-20">
+          {/* <p className="text-gray-400 text-2xl capitalize z-20">
             Build fast. Ship fast.{" "}
             <span className="hover:underline">Using BetterIDEa.</span>
-          </p>
+          </p> */}
 
           <div className="flex flex-row justify-center items-center gap-5 pt-2 z-10">
             <a
@@ -107,8 +129,8 @@ function App() {
       </div>
 
       <section id="steps" className="relative flex flex-col gap-24 py-24 px-8">
-        <h2 className="text-5xl font-bold text-center capitalize">
-          Getting started is easy as 1,2,3...
+        <h2 className="text-5xl font-bold text-center">
+          Getting started is as easy as
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
@@ -129,12 +151,6 @@ function App() {
             Icon={Icons.test}
             gradient="bg-gradient-to-r from-cyan-500 to-blue-500"
           />
-          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card
-            label="Iterate"
-            Icon={Icons.iterate}
-            gradient="bg-gradient-to-r from-blue-600 to-violet-600"
-          />
         </div>
       </section>
 
@@ -142,7 +158,7 @@ function App() {
         id="demo"
         className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl font-bold text-center capitalize">Demo</h2>
+        <h2 className="text-5xl font-bold text-center">...try it rn!</h2>
 
         <div className="mockup-browser w-full max-w-screen-xl border bg-base-300">
           <div className="mockup-browser-toolbar">
@@ -150,7 +166,88 @@ function App() {
           </div>
 
           <div className="flex justify-center w-full aspect-[16/9] bg-base-200">
-            <iframe src="https://ide.betteridea.dev" className="w-full h-full"></iframe>
+            <iframe
+              src="https://ide.betteridea.dev"
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="form"
+        className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
+      >
+        <h2 className="text-5xl font-bold text-center">
+          If you haven't already...
+        </h2>
+
+        <div className="flex flex-row justify-evenly gap-4 w-full items">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-row gap-6 items-center">
+              <p>follow us</p>
+
+              <a
+                className="rounded-2xl bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+                href="https://twitter.com/betteridea_dev"
+                target="_blank"
+                rel="noreferer"
+              >
+                <Icons.twitter className="h-4 w-4 text-black" />
+              </a>
+
+              <a
+                className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+                href="https://twitter.com/betteridea_dev"
+                target="_blank"
+                rel="noreferer"
+              >
+                <Icons.discord className="h-4 w-4 text-black" />
+                discord
+              </a>
+            </div>
+
+            <div className="flex flex-row gap-6 items-center">
+              <p>star github repo</p>
+
+              <a
+                className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+                href="https://twitter.com/betteridea_dev"
+                target="_blank"
+                rel="noreferer"
+              >
+                <Icons.github className="h-4 w-4 text-black" />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4 w-full max-w-[400px]">
+            <p className="text-center">send us a mail</p>
+
+            <form className="flex flex-col gap-4 bg-gray-700 p-8 rounded-2xl w-full">
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">name</span>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="input input-bordered w-full"
+                />
+              </label>
+
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">name</span>
+                </div>
+                <textarea
+                  className="textarea textarea-bordered h-24"
+                  placeholder="Query"
+                ></textarea>
+              </label>
+
+              <button type="submit">Send mail</button>
+            </form>
           </div>
         </div>
       </section>
