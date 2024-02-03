@@ -42,12 +42,30 @@ function SocialLink({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
+function NavLink(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
+) {
+  return (
+    <a
+      {...props}
+      target={props.target ?? "_blank"}
+      rel="noreferrer"
+      className={cn("btn btn-ghost", props.className)}
+    >
+      {props.children}
+    </a>
+  );
+}
+
 function App() {
   return (
-    <main className="relative bg-black text-white" data-theme="luxury">
+    <main className="relative bg-black text-white" data-theme="light">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
         <header className="w-full fixed top-0 left-0 right-0 z-20">
-          <div className="navbar w-full">
+          <div className="navbar w-full p-4 md:p-8 lg:p-12">
             <div className="navbar-start">
               <div className="dropdown">
                 <div
@@ -67,24 +85,16 @@ function App() {
 
             <div className="navbar-center hidden lg:flex"></div>
 
-            <div className="navbar-end gap-2">
-              <a
-                href="https://ide.betteridea.dev/"
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                Better IDE
-              </a>
+            <div className="navbar-end gap-8">
+              <NavLink href="/" target="_self">
+                Home
+              </NavLink>
 
-              <a
-                href="https://ide.betteridea.dev/"
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                AO Notebook
-              </a>
+              <NavLink href="https://ide.betteridea.dev/">
+                IDE <Icons.arrowLink className="h-4 w-4" />
+              </NavLink>
+
+              <NavLink href="#">Team</NavLink>
             </div>
           </div>
         </header>
@@ -106,7 +116,7 @@ function App() {
             </SocialLink>
           </div>
 
-          <h1 className="text-6xl capitalize font-extrabold z-20">
+          <h1 className="text-6xl capitalize z-20">
             One stop enviornment <br />
             for devs on{" "}
             <span className="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
@@ -121,7 +131,7 @@ function App() {
 
           <div className="flex flex-row justify-center items-center gap-5 pt-2 z-10">
             <a
-              className="btn btn-primary"
+              className="px-8 py-2 bg-[#006F86] rounded-3xl"
               href="https://ide.betteridea.dev/"
               target="_blank"
               rel="noreferrer"

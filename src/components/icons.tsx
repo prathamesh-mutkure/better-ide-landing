@@ -45,6 +45,7 @@ import {
   Mail,
   Youtube,
   Github,
+  ArrowUpRight,
   type XIcon as LucideIcon,
   LucideProps,
 } from "lucide-react";
@@ -99,6 +100,7 @@ export const Icons = {
   youtube: Youtube,
   mail: Mail,
   github: Github,
+  arrowLink: ArrowUpRight,
 
   discord: (props: LucideProps) => (
     <svg
