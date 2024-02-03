@@ -66,6 +66,21 @@ const getStartedData = [
   ["test for bugs on local deployment"],
 ];
 
+const aoBookData = [
+  {
+    title: "Familiar Efficiency",
+    desc: "Efficiency of Google Colab, providing a familiar structure for on-chain computations with ease.",
+  },
+  {
+    title: "Ease of Usability",
+    desc: "User-friendly interface, designed for effortless navigation and coding.",
+  },
+  {
+    title: "Streamlined Workflows",
+    desc: "Thoughtfully streamlined workflows for maximum productivity and creativity.",
+  },
+];
+
 function App() {
   const nameRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLTextAreaElement>(null);
@@ -208,6 +223,42 @@ function App() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section
+        id="aobook"
+        className="relative flex flex-col justify-center items-center gap-24 py-24 px-8"
+      >
+        <h2 className="text-4xl text-center">
+          Introducing the all new{" "}
+          <span className="bg-gradient-to-r from-[#006F86] to-white bg-clip-text text-transparent font-bold">
+            AO notebook
+          </span>{" "}
+          only on{" "}
+          <span className="bg-gradient-to-r from-[#006F86] to-white bg-clip-text text-transparent font-bold">
+            BetterIDEa...
+          </span>
+        </h2>
+
+        <div className="flex flex-row flex-wrap justify-center gap-8 max-w-[1000px]">
+          {aoBookData.map((item, i) => {
+            return (
+              <div
+                className="card w-[400px] border backdrop-blur-md bg-white/5 relative"
+                key={i}
+              >
+                <div className="card-body z-20">
+                  <h2 className="card-title font-bold">{item.title}</h2>
+
+                  <p>{item.desc}</p>
+                </div>
+
+                {/* Fix Background Blur */}
+                {/* <div className="w-[60px] h-[100px] bg-yellow-200 absolute right-2 bottom-0 top-4 z-10"></div> */}
+              </div>
+            );
+          })}
         </div>
       </section>
 
