@@ -117,7 +117,7 @@ function App() {
                   role="button"
                   className="btn btn-ghost lg:hidden"
                 >
-                  <img className="h-5 w-5" src="/logo.png" />
+                  <img className="h-6 w-6" src="/logo.png" />
                 </div>
               </div>
 
@@ -138,7 +138,9 @@ function App() {
                 IDE <Icons.arrowLink className="h-4 w-4" />
               </NavLink>
 
-              <NavLink href="#">Team</NavLink>
+              <NavLink href="#" target="_self">
+                Team
+              </NavLink>
             </div>
           </div>
         </header>
@@ -213,7 +215,10 @@ function App() {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {getStartedData.map((item, i) => {
               return item.length > 0 ? (
-                <ul key={i} className="h-24 lg:h-40 aspect-[1.5] list-disc">
+                <ul
+                  key={i}
+                  className="h-24 lg:h-40 aspect-[1.5] list-disc pl-6"
+                >
                   {item.map((label, j) => {
                     return <li key={j}>{label}</li>;
                   })}
@@ -245,7 +250,7 @@ function App() {
           {aoBookData.map((item, i) => {
             return (
               <div
-                className="card w-[400px] border backdrop-blur-md bg-white/5 relative"
+                className="card w-[320px] md:w-[400px] border backdrop-blur-md bg-white/5 relative"
                 key={i}
               >
                 <div className="card-body z-20">
@@ -287,13 +292,13 @@ function App() {
 
       <section
         id="form"
-        className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
+        className="flex flex-col justify-center items-center w-full gap-12 md:gap-24 py-24 px-8"
       >
         <h2 className="text-5xl text-center">If you haven't already...</h2>
 
-        <div className="flex flex-row justify-evenly gap-4 w-full items">
-          <div className="flex flex-col gap-8">
-            <div className="h-4"></div>
+        <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full items">
+          <div className="flex flex-col gap-4 md:gap-8">
+            <div className="hidden md:h-4"></div>
 
             <div className="flex flex-row gap-6 items-center">
               <p>follow us</p>
@@ -308,7 +313,7 @@ function App() {
               </SocialLink>
             </div>
 
-            <div className="flex flex-row gap-6 items-center">
+            <div className="flex flex-row gap-6 items-center justify-center md:justify-start">
               <p>star github repo</p>
 
               <SocialLink href="https://twitter.com/betteridea_dev">
@@ -366,7 +371,9 @@ function App() {
 
           <NavLink href="https://ide.betteridea.dev/">IDE</NavLink>
 
-          <NavLink href="#">Team</NavLink>
+          <NavLink href="#" target="_self">
+            Team
+          </NavLink>
         </nav>
 
         <aside>
