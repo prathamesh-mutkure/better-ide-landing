@@ -21,6 +21,8 @@ code {
 footer {
   /* background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png"); */
   background-image: url("/bg.png");
+
+  /* bg-[linear-gradient(0deg,rgba(0,0,0,1)_25%,rgba(0,0,0,0)_80%)] */
 }
 
 #hero .overlay {

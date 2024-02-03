@@ -1,7 +1,8 @@
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
+// import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
 function Card({
   label,
@@ -66,6 +67,29 @@ const getStartedData = [
 ];
 
 function App() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const queryRef = useRef<HTMLTextAreaElement>(null);
+
+  // TODO: Integrate API and toast
+  async function onQuerySubmit() {
+    const name = nameRef.current?.value;
+    const query = nameRef.current?.value;
+
+    // startWindToast(
+    //   "Success",
+    //   "You'll hear from us soon",
+    //   "success",
+    //   3,
+    //   "bottom"
+    // );
+
+    if (!name || !query) {
+      return;
+    }
+
+    console.log({ name, query });
+  }
+
   return (
     <main className="relative bg-black text-white" data-theme="light">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
@@ -108,7 +132,7 @@ function App() {
           id="hero"
           className="relative flex flex-col text-center flex-auto justify-center items-center gap-16 h-screen w-screen"
         >
-          <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black bg-[linear-gradient(0deg,rgba(0,0,0,1)_25%,rgba(0,0,0,0)_80%)]"></div>
+          <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black"></div>
 
           <div className="flex flex-row gap-4">
             <SocialLink href="https://twitter.com/betteridea_dev">
@@ -214,12 +238,12 @@ function App() {
         id="form"
         className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl font-bold text-center">
-          If you haven't already...
-        </h2>
+        <h2 className="text-5xl text-center">If you haven't already...</h2>
 
         <div className="flex flex-row justify-evenly gap-4 w-full items">
           <div className="flex flex-col gap-8">
+            <div className="h-4"></div>
+
             <div className="flex flex-row gap-6 items-center">
               <p>follow us</p>
 
@@ -245,29 +269,39 @@ function App() {
           <div className="flex flex-col gap-4 w-full max-w-[400px]">
             <p className="text-center">send us a mail</p>
 
-            <form className="flex flex-col gap-4 bg-gray-700 p-8 rounded-2xl w-full">
+            <form className="flex flex-col gap-4 bg-[#212121] p-8 rounded-2xl w-full">
               <label className="form-control w-full">
                 <div className="label">
-                  <span className="label-text">name</span>
+                  <span className="label-text text-white">name</span>
                 </div>
                 <input
                   type="text"
-                  placeholder="Name"
-                  className="input input-bordered w-full"
+                  placeholder=""
+                  className="input input-bordered w-full rounded-lg text-black"
+                  ref={nameRef}
+                  required
                 />
               </label>
 
               <label className="form-control w-full">
                 <div className="label">
-                  <span className="label-text">name</span>
+                  <span className="label-text text-white">query</span>
                 </div>
                 <textarea
-                  className="textarea textarea-bordered h-24"
-                  placeholder="Query"
+                  className="textarea textarea-bordered h-24 rounded-lg text-black"
+                  placeholder=""
+                  ref={queryRef}
+                  required
                 ></textarea>
               </label>
 
-              <button type="submit">Send mail</button>
+              <button
+                type="button"
+                className="px-8 py-2 bg-[#006F86] rounded-3xl"
+                onClick={onQuerySubmit}
+              >
+                Send mail
+              </button>
             </form>
           </div>
         </div>
