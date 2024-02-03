@@ -15,16 +15,13 @@ function Card({
   return (
     <div
       className={cn(
-        "bg-transparent flex flex-col justify-center items-center gap-3 h-32 w-32 lg:h-40 lg:w-40 cursor-pointer transition-all p-4 rounded-2xl hover:bg-white/15",
+        "bg-transparent flex flex-row justify-center items-center gap-6 h-24 lg:h-40 aspect-[1.5] cursor-pointer transition-all p-4 rounded-2xl hover:bg-white/15",
         gradient
       )}
     >
-      {/* border border-white/50 */}
-      <Icon />
+      <h3 className="text-xl font-bold">{label}</h3>
 
-      <h3 className="text-lg">{label}</h3>
-
-      <Icons.arrowDown />
+      <Icon className="h-8 w-8" />
     </div>
   );
 }
@@ -59,6 +56,14 @@ function NavLink(
     </a>
   );
 }
+
+const getStartedData = [
+  ["explore contract templates", "or begin from scratch"],
+  [],
+  ["deploy locally", "or on the mainnet"],
+  [],
+  ["test for bugs on local deployment"],
+];
 
 function App() {
   return (
@@ -143,28 +148,42 @@ function App() {
       </div>
 
       <section id="steps" className="relative flex flex-col gap-24 py-24 px-8">
-        <h2 className="text-5xl font-bold text-center">
-          Getting started is as easy as
-        </h2>
+        <h2 className="text-5xl text-center">Getting started is as easy as</h2>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
-          <Card
-            label="Code"
-            Icon={Icons.code}
-            gradient="bg-gradient-to-r from-fuchsia-600 to-purple-600"
-          />
-          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card
-            label="Deploy"
-            Icon={Icons.deploy}
-            gradient="bg-gradient-to-r from-indigo-400 to-cyan-400"
-          />
-          <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-          <Card
-            label="Test"
-            Icon={Icons.test}
-            gradient="bg-gradient-to-r from-cyan-500 to-blue-500"
-          />
+        <div className="flex flex-row justify-center gap-12 lg:flex-col">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            <Card
+              label="Code"
+              Icon={Icons.code}
+              gradient="bg-[linear-gradient(166.68deg,_#2F0368_48.22%,_#E28BAA_98.47%,_#FA4888_98.47%)]"
+            />
+            <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
+            <Card
+              label="Deploy"
+              Icon={Icons.deploy}
+              gradient="bg-[linear-gradient(85.45deg,_#033168_33.65%,_#008D7C_92.6%)]"
+            />
+            <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
+            <Card
+              label="Test"
+              Icon={Icons.test}
+              gradient="bg-[linear-gradient(177.94deg,_#BC8700_47.8%,_#FAC848_105.69%)]"
+            />
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            {getStartedData.map((item, i) => {
+              return item.length > 0 ? (
+                <ul key={i} className="h-24 lg:h-40 aspect-[1.5] list-disc">
+                  {item.map((label, j) => {
+                    return <li key={j}>{label}</li>;
+                  })}
+                </ul>
+              ) : (
+                <div className="h-16 w-0 lg:w-16 lg:h-0"></div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -172,9 +191,12 @@ function App() {
         id="demo"
         className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl font-bold text-center">...try it rn!</h2>
+        <h2 className="text-5xl text-center">...try it rn!</h2>
 
-        <div className="mockup-browser w-full max-w-screen-xl border bg-base-300">
+        <div
+          className="mockup-browser w-full max-w-screen-xl border bg-base-300"
+          data-theme="luxury"
+        >
           <div className="mockup-browser-toolbar">
             <div className="input">https://ide.betteridea.dev/</div>
           </div>
@@ -251,30 +273,29 @@ function App() {
         </div>
       </section>
 
-      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+      <footer className="footer footer-center p-10 rounded gap-y-16">
+        <nav className="grid grid-flow-col gap-12">
+          <NavLink href="/" target="_self">
+            Home
+          </NavLink>
+
+          <NavLink href="https://ide.betteridea.dev/">IDE</NavLink>
+
+          <NavLink href="#">Team</NavLink>
+        </nav>
+
         <aside>
-          <img src="/logo.png" className="h-20 w-20" />
-          <p className="font-bold">
-            Better IDE. <br />
-            Building on Arweave
-          </p>
+          <a href="/">
+            <div className="flex flex-row gap-4 text-3xl cursor-pointer items-center">
+              <img src="/logo.png" className="h-12 aspect-square" />
+              BetterIDEa
+            </div>
+          </a>
+
+          <div className="h-4"></div>
+
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>
-
-        <nav>
-          <div className="grid grid-flow-col gap-4">
-            <a href="https://twitter.com/betteridea_dev">
-              <Icons.twitter />
-            </a>
-            <a href="https://discord.gg/nm6VKUQBrA">
-              {/* TODO: Add discord svg */}
-              <Icons.discord />
-            </a>
-            <a href="mailto:hello@betteridea.dev">
-              <Icons.mail />
-            </a>
-          </div>
-        </nav>
       </footer>
     </main>
   );
