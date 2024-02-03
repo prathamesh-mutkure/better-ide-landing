@@ -1,6 +1,7 @@
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
+import { ReactNode } from "react";
 
 function Card({
   label,
@@ -25,6 +26,19 @@ function Card({
 
       <Icons.arrowDown />
     </div>
+  );
+}
+
+function SocialLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      className="rounded-2xl text-white border px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+      href={href}
+      target="_blank"
+      rel="noreferer"
+    >
+      {children}
+    </a>
   );
 }
 
@@ -82,24 +96,14 @@ function App() {
           <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black bg-[linear-gradient(0deg,rgba(0,0,0,1)_25%,rgba(0,0,0,0)_80%)]"></div>
 
           <div className="flex flex-row gap-4">
-            <a
-              className="rounded-2xl bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-              href="https://twitter.com/betteridea_dev"
-              target="_blank"
-              rel="noreferer"
-            >
-              <Icons.twitter className="h-4 w-4 text-black" />
-            </a>
+            <SocialLink href="https://twitter.com/betteridea_dev">
+              <Icons.twitter className="h-4 w-4" fill="white" color="white" />
+            </SocialLink>
 
-            <a
-              className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-              href="https://twitter.com/betteridea_dev"
-              target="_blank"
-              rel="noreferer"
-            >
-              <Icons.discord className="h-4 w-4 text-black" />
+            <SocialLink href="https://twitter.com/betteridea_dev">
+              <Icons.discord className="h-4 w-4" />
               discord
-            </a>
+            </SocialLink>
           </div>
 
           <h1 className="text-6xl capitalize font-extrabold z-20">
@@ -187,37 +191,22 @@ function App() {
             <div className="flex flex-row gap-6 items-center">
               <p>follow us</p>
 
-              <a
-                className="rounded-2xl bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-                href="https://twitter.com/betteridea_dev"
-                target="_blank"
-                rel="noreferer"
-              >
-                <Icons.twitter className="h-4 w-4 text-black" />
-              </a>
+              <SocialLink href="https://twitter.com/betteridea_dev">
+                <Icons.twitter className="h-4 w-4" fill="white" color="white" />
+              </SocialLink>
 
-              <a
-                className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-                href="https://twitter.com/betteridea_dev"
-                target="_blank"
-                rel="noreferer"
-              >
-                <Icons.discord className="h-4 w-4 text-black" />
+              <SocialLink href="https://twitter.com/betteridea_dev">
+                <Icons.discord className="h-4 w-4" />
                 discord
-              </a>
+              </SocialLink>
             </div>
 
             <div className="flex flex-row gap-6 items-center">
               <p>star github repo</p>
 
-              <a
-                className="rounded-2xl bg-[#5462EB] bg-white text-black px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-                href="https://twitter.com/betteridea_dev"
-                target="_blank"
-                rel="noreferer"
-              >
-                <Icons.github className="h-4 w-4 text-black" />
-              </a>
+              <SocialLink href="https://twitter.com/betteridea_dev">
+                <Icons.github className="h-4 w-4" />
+              </SocialLink>
             </div>
           </div>
 
