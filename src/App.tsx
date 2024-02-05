@@ -1,7 +1,7 @@
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 // import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
 function Card({
@@ -30,7 +30,7 @@ function Card({
 function SocialLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <a
-      className="rounded-2xl text-white border px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
+      className="rounded-2xl bg-black hover:bg-white/20 text-white border border-[#4C4C4C] px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
       href={href}
       target="_blank"
       rel="noreferer"
@@ -51,7 +51,28 @@ function NavLink(
       {...props}
       target={props.target ?? "_blank"}
       rel="noreferrer"
-      className={cn("btn btn-ghost", props.className)}
+      className={cn("btn btn-ghost hover:underline", props.className)}
+    >
+      {props.children}
+    </a>
+  );
+}
+
+function ActionButton(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
+) {
+  return (
+    <a
+      {...props}
+      target={props.target ?? "_blank"}
+      rel="noreferrer"
+      className={cn(
+        "px-8 py-2 bg-[#006F86] hover:bg-[#025161] rounded-3xl cursor-pointer text-center",
+        props.className
+      )}
     >
       {props.children}
     </a>
@@ -85,6 +106,20 @@ function App() {
   const nameRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLTextAreaElement>(null);
 
+  const [color, setcolor] = useState(false);
+
+  function changeNavBg() {
+    window.scrollY >= 90 ? setcolor(true) : setcolor(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavBg);
+
+    return () => {
+      window.removeEventListener("scroll", changeNavBg);
+    };
+  }, []);
+
   // TODO: Integrate API and toast
   async function onQuerySubmit() {
     const name = nameRef.current?.value;
@@ -109,7 +144,12 @@ function App() {
     <main className="relative bg-black text-white" data-theme="light">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
         <header className="w-full fixed top-0 left-0 right-0 z-20">
-          <div className="navbar w-full p-4 md:p-8 lg:p-12">
+          <div
+            className={cn(
+              "navbar w-full md:px-8 md:py-4 lg:px-12 lg:py-6",
+              color && "bg-white/15"
+            )}
+          >
             <div className="navbar-start">
               <div className="dropdown">
                 <div
@@ -175,16 +215,7 @@ function App() {
             <span className="hover:underline">Using BetterIDEa.</span>
           </p> */}
 
-          <div className="flex flex-row justify-center items-center gap-5 pt-2 z-10">
-            <a
-              className="px-8 py-2 bg-[#006F86] rounded-3xl"
-              href="https://ide.betteridea.dev/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Start Building
-            </a>
-          </div>
+          <ActionButton className="z-10">Start Building</ActionButton>
         </section>
       </div>
 
@@ -351,13 +382,7 @@ function App() {
                 ></textarea>
               </label>
 
-              <button
-                type="button"
-                className="px-8 py-2 bg-[#006F86] rounded-3xl"
-                onClick={onQuerySubmit}
-              >
-                Send mail
-              </button>
+              <ActionButton>Send mail</ActionButton>
             </form>
           </div>
         </div>
