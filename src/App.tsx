@@ -382,7 +382,7 @@ function App() {
                 ></textarea>
               </label>
 
-              <ActionButton>Send mail</ActionButton>
+              <ActionButton onClick={onQuerySubmit}>Send mail</ActionButton>
             </form>
           </div>
         </div>
