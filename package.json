@@ -17,7 +17,8 @@
     "lucide-react": "^0.317.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "vite-plugin-radar": "^0.9.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.10",

@@ -196,7 +196,7 @@ function App() {
               <Icons.twitter className="h-4 w-4" fill="white" color="white" />
             </SocialLink>
 
-            <SocialLink href="https://twitter.com/betteridea_dev">
+            <SocialLink href="https://discord.gg/nm6VKUQBrA">
               <Icons.discord className="h-4 w-4" />
               discord
             </SocialLink>
@@ -215,7 +215,7 @@ function App() {
             <span className="hover:underline">Using BetterIDEa.</span>
           </p> */}
 
-          <ActionButton className="z-10">Start Building</ActionButton>
+          <ActionButton className="z-10" href="https://ide.betteridea.dev">Start Building</ActionButton>
         </section>
       </div>
 
@@ -338,7 +338,7 @@ function App() {
                 <Icons.twitter className="h-4 w-4" fill="white" color="white" />
               </SocialLink>
 
-              <SocialLink href="https://twitter.com/betteridea_dev">
+              <SocialLink href="https://discord.gg/nm6VKUQBrA">
                 <Icons.discord className="h-4 w-4" />
                 discord
               </SocialLink>
@@ -347,7 +347,7 @@ function App() {
             <div className="flex flex-row gap-6 items-center justify-center md:justify-start">
               <p>star github repo</p>
 
-              <SocialLink href="https://twitter.com/betteridea_dev">
+              <SocialLink href="https://github.com/ankushKun/betterIDE">
                 <Icons.github className="h-4 w-4" />
               </SocialLink>
             </div>
