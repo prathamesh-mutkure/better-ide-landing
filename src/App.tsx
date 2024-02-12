@@ -70,7 +70,7 @@ function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-8 py-2 bg-[#006F86] hover:bg-[#025161] rounded-3xl cursor-pointer text-center",
+        "px-6 py-5 bg-[var(--green)] hover:bg-[#025161] rounded-3xl cursor-pointer text-center text-2xl text-[#212121]",
         props.className
       )}
     >
@@ -189,33 +189,43 @@ function App() {
           id="hero"
           className="relative flex flex-col text-center flex-auto justify-center items-center gap-16 h-screen w-screen"
         >
-          <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black"></div>
+          {/* Create a grid that has two rows on mobile and converts to single row on larger devices */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <h1 className="text-[84px] z-20 font-bold text-center lg:text-left">
+              One stop env <br />
+              for devs
+              <br /> on <span className="text-[var(--green)]">Arweave</span>
+            </h1>
 
-          <div className="flex flex-row gap-4">
-            <SocialLink href="https://twitter.com/betteridea_dev">
-              <Icons.twitter className="h-4 w-4" fill="white" color="white" />
-            </SocialLink>
+            <div className="h-20 lg:hidden"></div>
 
-            <SocialLink href="https://discord.gg/nm6VKUQBrA">
-              <Icons.discord className="h-4 w-4" />
-              discord
-            </SocialLink>
+            <div className="flex flex-col gap-10 items-center lg:items-end">
+              <div className="flex flex-row gap-4 items-center justify-end">
+                <button className="btn rounded-3xl h-full w-auto">
+                  <Icons.plusCircle className="h-6 w-6" />
+                </button>
+
+                <ActionButton
+                  className="z-10"
+                  href="https://ide.betteridea.dev"
+                >
+                  Start Building
+                </ActionButton>
+              </div>
+
+              <div className="text-[#686868] max-w-sm flex flex-col gap-4 text-center lg:text-right">
+                <p>
+                  // build without setting up <br /> extensive dev env from
+                  scratch
+                </p>
+
+                <p>
+                  you focus on writing good code,
+                  <br /> we worry about execution, deal?
+                </p>
+              </div>
+            </div>
           </div>
-
-          <h1 className="text-6xl capitalize z-20">
-            One stop enviornment <br />
-            for devs on{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
-              Arweave
-            </span>
-          </h1>
-
-          {/* <p className="text-gray-400 text-2xl capitalize z-20">
-            Build fast. Ship fast.{" "}
-            <span className="hover:underline">Using BetterIDEa.</span>
-          </p> */}
-
-          <ActionButton className="z-10" href="https://ide.betteridea.dev">Start Building</ActionButton>
         </section>
       </div>
 
@@ -419,3 +429,20 @@ function App() {
 }
 
 export default App;
+
+{
+  /* <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black"></div> */
+}
+
+{
+  /* <div className="flex flex-row gap-4">
+            <SocialLink href="https://twitter.com/betteridea_dev">
+              <Icons.twitter className="h-4 w-4" fill="white" color="white" />
+            </SocialLink>
+
+            <SocialLink href="https://discord.gg/nm6VKUQBrA">
+              <Icons.discord className="h-4 w-4" />
+              discord
+            </SocialLink>
+          </div> */
+}

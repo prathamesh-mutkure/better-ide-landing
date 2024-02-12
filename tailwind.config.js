@@ -5,10 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          '"Kodchasan", sans-serif',
-          require("tailwindcss/defaultTheme").fontFamily.sans,
-        ],
+        // sans: [
+        //   '"Kodchasan", sans-serif',
+        //   require("tailwindcss/defaultTheme").fontFamily.sans,
+        // ],
       },
     },
   },
