@@ -7,22 +7,26 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 function Card({
   label,
   Icon,
+  text,
   gradient = "",
 }: {
   label: string;
   Icon: LucideIcon;
+  text: string;
   gradient?: string;
 }) {
   return (
     <div
       className={cn(
-        "bg-transparent flex flex-row justify-center items-center gap-6 h-24 lg:h-40 aspect-[1.5] cursor-pointer transition-all p-4 rounded-2xl hover:bg-white/15",
-        gradient
+        "bg-[#191919] flex flex-col justify-center items-center gap-6 h-[190px] w-[240px] cursor-pointer transition-all p-4 rounded-2xl border border-[#686868] hover:bg-white/15"
+        // gradient
       )}
     >
-      <h3 className="text-xl font-bold">{label}</h3>
+      <h3 className="text-[28px] font-bold">{label}</h3>
 
       <Icon className="h-8 w-8" />
+
+      <p className="text-[20px]">{text}</p>
     </div>
   );
 }
@@ -70,7 +74,7 @@ function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono",
+        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono font-bold",
         props.className
       )}
     >
@@ -141,7 +145,7 @@ function App() {
   }
 
   return (
-    <main className="relative bg-black text-white" data-theme="light">
+    <main className="relative bg-[#111111] text-white" data-theme="light">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
         <header className="w-full fixed top-0 left-0 right-0 z-20">
           <div
@@ -190,7 +194,7 @@ function App() {
           className="relative flex flex-col text-center flex-auto justify-center items-center gap-16 h-screen w-screen"
         >
           {/* Create a grid that has two rows on mobile and converts to single row on larger devices */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 container">
             <h1 className="text-[84px] z-20 font-bold text-center lg:text-left">
               One stop env <br />
               for devs
@@ -229,14 +233,14 @@ function App() {
         </section>
       </div>
 
-      <section id="steps" className="relative py-24 px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between">
+      <section id="steps" className="relative py-24 px-8 bg-[#111111]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between container mx-auto">
           <div className="flex flex-col gap-8 text-left">
-            <h2 className="text-5xl">Getting started is as easy as</h2>
+            <h2 className="text-4xl">Getting started is as easy as</h2>
 
-            <div className="h-[1px] w-[70%] bg-gray-500"></div>
+            <div className="h-[1px] w-[50%] bg-gray-500"></div>
 
-            <p>
+            <p className="text-[#686868]">
               // BetterIDEa provides a powerful,
               <br />
               and seamless developer experience
@@ -256,6 +260,7 @@ function App() {
                 label="Code"
                 Icon={Icons.code}
                 gradient="bg-[linear-gradient(166.68deg,_#2F0368_48.22%,_#E28BAA_98.47%,_#FA4888_98.47%)]"
+                text="Craft clean code."
               />
             </div>
 
@@ -264,6 +269,7 @@ function App() {
                 label="Deploy"
                 Icon={Icons.deploy}
                 gradient="bg-[linear-gradient(85.45deg,_#033168_33.65%,_#008D7C_92.6%)]"
+                text="Deploy frictionlessly"
               />
             </div>
 
@@ -272,6 +278,7 @@ function App() {
                 label="Test"
                 Icon={Icons.test}
                 gradient="bg-[linear-gradient(177.94deg,_#BC8700_47.8%,_#FAC848_105.69%)]"
+                text="Debug & Iterate"
               />
             </div>
           </div>
@@ -280,25 +287,25 @@ function App() {
 
       <section
         id="aobook"
-        className="relative flex flex-col justify-center items-center gap-24 py-24 px-8 text-black text-center bg-[#F4FEEA]"
+        className="relative flex flex-col justify-center items-center gap-8 py-24 px-8 text-black text-center bg-[#F4FEEA]"
       >
         <h2 className="text-4xl text-center">
           Introducing <span className="font-bold">AONotebook</span>
         </h2>
 
-        <p>
+        <p className="text-[#686868] text-center text-[18px]">
           // colab-like ease for Actor-Oriented smart contracts.
           <br />
           build powerful dApps faster, with Lua.
         </p>
 
-        <p className="font-bold">Try a snippet here!</p>
+        <p className="font-bold text-[24px]">Try a snippet here!</p>
 
         <div className="w-full flex items-center justify-center">
           <img src="/demo.png" className="w-full max-w-screen-lg" />
         </div>
 
-        <div className="flex flex-row">
+        <div className="flex flex-row my-8">
           <div></div>
 
           <div className="flex flex-row items-center justify-center gap-4">
@@ -319,7 +326,7 @@ function App() {
 
       <section
         id="demo"
-        className="flex flex-row justify-center items-center w-full gap-24 py-24 px-8"
+        className="flex flex-row justify-center items-center w-full gap-24 py-24 px-8 bg-[#111111]"
       >
         <div
           className="mockup-browser max-w-screen-xl border bg-base-300 flex-grow"
@@ -339,9 +346,9 @@ function App() {
 
         <div className="flex flex-col gap-4 flex-grow text-right">
           <div>
-            <h1>How it works</h1>
+            <h2 className="text-4xl">How it works</h2>
 
-            <hr />
+            <hr className="w-[50%]" />
 
             <div className="text-[#686868] max-w-sm flex flex-col gap-4 text-center lg:text-right">
               <p>// here&apos;s a tinyyy demo of what you can do</p>
@@ -404,20 +411,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div className="overlay absolute z-10 top-0 bottom-0 left-0 right-0 h-full w-full bg-black"></div> */
-}
-
-{
-  /* <div className="flex flex-row gap-4">
-            <SocialLink href="https://twitter.com/betteridea_dev">
-              <Icons.twitter className="h-4 w-4" fill="white" color="white" />
-            </SocialLink>
-
-            <SocialLink href="https://discord.gg/nm6VKUQBrA">
-              <Icons.discord className="h-4 w-4" />
-              discord
-            </SocialLink>
-          </div> */
-}
