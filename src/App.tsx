@@ -70,7 +70,7 @@ function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-6 py-5 bg-[var(--green)] hover:bg-[#025161] rounded-3xl cursor-pointer text-center text-2xl text-[#212121]",
+        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121]",
         props.className
       )}
     >
@@ -229,82 +229,91 @@ function App() {
         </section>
       </div>
 
-      <section id="steps" className="relative flex flex-col gap-24 py-24 px-8">
-        <h2 className="text-5xl text-center">Getting started is as easy as</h2>
+      <section id="steps" className="relative py-24 px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between">
+          <div className="flex flex-col gap-8 text-left">
+            <h2 className="text-5xl">Getting started is as easy as</h2>
 
-        <div className="flex flex-row justify-center gap-12 lg:flex-col">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
-            <Card
-              label="Code"
-              Icon={Icons.code}
-              gradient="bg-[linear-gradient(166.68deg,_#2F0368_48.22%,_#E28BAA_98.47%,_#FA4888_98.47%)]"
-            />
-            <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-            <Card
-              label="Deploy"
-              Icon={Icons.deploy}
-              gradient="bg-[linear-gradient(85.45deg,_#033168_33.65%,_#008D7C_92.6%)]"
-            />
-            <div className="h-16 w-0 lg:w-16 lg:h-0 border border-white/80"></div>
-            <Card
-              label="Test"
-              Icon={Icons.test}
-              gradient="bg-[linear-gradient(177.94deg,_#BC8700_47.8%,_#FAC848_105.69%)]"
-            />
+            <div className="h-[1px] w-[70%] bg-gray-500"></div>
+
+            <p>
+              // BetterIDEa provides a powerful,
+              <br />
+              and seamless developer experience
+              <br />
+              that lets you focus, on writing good code
+              <br /> without worrying about execution.
+            </p>
+
+            <div className="flex-grow lg:min-h-20"></div>
+
+            <ActionButton className="w-fit">Get Started</ActionButton>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
-            {getStartedData.map((item, i) => {
-              return item.length > 0 ? (
-                <ul
-                  key={i}
-                  className="h-24 lg:h-40 aspect-[1.5] list-disc pl-6"
-                >
-                  {item.map((label, j) => {
-                    return <li key={j}>{label}</li>;
-                  })}
-                </ul>
-              ) : (
-                <div className="h-16 w-0 lg:w-16 lg:h-0"></div>
-              );
-            })}
+          <div className="grid grid-cols-2 gap-4 justify-items-center max-w-[524px] self-center justify-self-end">
+            <div className="justify-self-center self-center">
+              <Card
+                label="Code"
+                Icon={Icons.code}
+                gradient="bg-[linear-gradient(166.68deg,_#2F0368_48.22%,_#E28BAA_98.47%,_#FA4888_98.47%)]"
+              />
+            </div>
+
+            <div className="justify-self-center self-center row-span-2">
+              <Card
+                label="Deploy"
+                Icon={Icons.deploy}
+                gradient="bg-[linear-gradient(85.45deg,_#033168_33.65%,_#008D7C_92.6%)]"
+              />
+            </div>
+
+            <div className="justify-self-center self-center">
+              <Card
+                label="Test"
+                Icon={Icons.test}
+                gradient="bg-[linear-gradient(177.94deg,_#BC8700_47.8%,_#FAC848_105.69%)]"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <section
         id="aobook"
-        className="relative flex flex-col justify-center items-center gap-24 py-24 px-8"
+        className="relative flex flex-col justify-center items-center gap-24 py-24 px-8 text-black text-center bg-[#F4FEEA]"
       >
         <h2 className="text-4xl text-center">
-          Introducing the all new{" "}
-          <span className="bg-gradient-to-r from-[#006F86] to-white bg-clip-text text-transparent font-bold">
-            AO notebook
-          </span>{" "}
-          only on{" "}
-          <span className="bg-gradient-to-r from-[#006F86] to-white bg-clip-text text-transparent font-bold">
-            BetterIDEa...
-          </span>
+          Introducing <span className="font-bold">AONotebook</span>
         </h2>
 
-        <div className="flex flex-row flex-wrap justify-center gap-8 max-w-[1000px]">
-          {aoBookData.map((item, i) => {
-            return (
-              <div
-                className="card w-[320px] md:w-[400px] border backdrop-blur-md bg-white/5 relative"
-                key={i}
-              >
-                <div className="card-body z-20">
-                  <h2 className="card-title font-bold">{item.title}</h2>
+        <p>
+          // colab-like ease for Actor-Oriented smart contracts.
+          <br />
+          build powerful dApps faster, with Lua.
+        </p>
 
-                  <p>{item.desc}</p>
-                </div>
+        <p className="font-bold">Try a snippet here!</p>
 
-                {/* Fix Background Blur */}
-                {/* <div className="w-[60px] h-[100px] bg-yellow-200 absolute right-2 bottom-0 top-4 z-10"></div> */}
+        <div className="w-full flex items-center justify-center">
+          <img src="/demo.png" className="w-full max-w-screen-lg" />
+        </div>
+
+        <div className="flex flex-row">
+          <div></div>
+
+          <div className="flex flex-row items-center justify-center gap-4">
+            {[
+              "Familiar Efficiency",
+              "Ease of Usability",
+              "Streamlined Workflows",
+            ].map((label, i) => (
+              <div key={i} className="bg-[#BECCB3] px-4 py-1 rounded-3xl">
+                {label}
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          <div></div>
         </div>
       </section>
 
