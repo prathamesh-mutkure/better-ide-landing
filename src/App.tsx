@@ -70,7 +70,7 @@ function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121]",
+        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono",
         props.className
       )}
     >

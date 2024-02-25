@@ -5,13 +5,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // sans: [
-        //   '"Kodchasan", sans-serif',
-        //   require("tailwindcss/defaultTheme").fontFamily.sans,
-        // ],
+        sans: [
+          '"Inter", sans-serif',
+          require("tailwindcss/defaultTheme").fontFamily.sans,
+        ],
+
+        mono: [
+          '"JetBrains Mono", monospace',
+          require("tailwindcss/defaultTheme").fontFamily.sans,
+        ],
       },
     },
   },
+
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 
   daisyui: {
