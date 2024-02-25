@@ -79,28 +79,28 @@ function ActionButton(
   );
 }
 
-const getStartedData = [
-  ["explore contract templates", "or begin from scratch"],
-  [],
-  ["deploy locally", "or on the mainnet"],
-  [],
-  ["test for bugs on local deployment"],
-];
+// const getStartedData = [
+//   ["explore contract templates", "or begin from scratch"],
+//   [],
+//   ["deploy locally", "or on the mainnet"],
+//   [],
+//   ["test for bugs on local deployment"],
+// ];
 
-const aoBookData = [
-  {
-    title: "Familiar Efficiency",
-    desc: "Efficiency of Google Colab, providing a familiar structure for on-chain computations with ease.",
-  },
-  {
-    title: "Ease of Usability",
-    desc: "User-friendly interface, designed for effortless navigation and coding.",
-  },
-  {
-    title: "Streamlined Workflows",
-    desc: "Thoughtfully streamlined workflows for maximum productivity and creativity.",
-  },
-];
+// const aoBookData = [
+//   {
+//     title: "Familiar Efficiency",
+//     desc: "Efficiency of Google Colab, providing a familiar structure for on-chain computations with ease.",
+//   },
+//   {
+//     title: "Ease of Usability",
+//     desc: "User-friendly interface, designed for effortless navigation and coding.",
+//   },
+//   {
+//     title: "Streamlined Workflows",
+//     desc: "Thoughtfully streamlined workflows for maximum productivity and creativity.",
+//   },
+// ];
 
 function App() {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -319,12 +319,10 @@ function App() {
 
       <section
         id="demo"
-        className="flex flex-col justify-center items-center w-full gap-24 py-24 px-8"
+        className="flex flex-row justify-center items-center w-full gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl text-center">...try it rn!</h2>
-
         <div
-          className="mockup-browser w-full max-w-screen-xl border bg-base-300"
+          className="mockup-browser max-w-screen-xl border bg-base-300 flex-grow"
           data-theme="luxury"
         >
           <div className="mockup-browser-toolbar">
@@ -338,100 +336,68 @@ function App() {
             ></iframe>
           </div>
         </div>
+
+        <div className="flex flex-col gap-4 flex-grow text-right">
+          <div>
+            <h1>How it works</h1>
+
+            <hr />
+
+            <div className="text-[#686868] max-w-sm flex flex-col gap-4 text-center lg:text-right">
+              <p>// here&apos;s a tinyyy demo of what you can do</p>
+
+              <p>on BetterIDEa, the more the better</p>
+            </div>
+          </div>
+
+          <ActionButton className="z-10" href="https://ide.betteridea.dev">
+            Start Building
+          </ActionButton>
+        </div>
       </section>
 
       <section
         id="form"
         className="flex flex-col justify-center items-center w-full gap-12 md:gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl text-center">If you haven't already...</h2>
+        <h2 className="text-5xl text-center">Reach out to us</h2>
 
-        <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full items">
-          <div className="flex flex-col gap-4 md:gap-8">
-            <div className="hidden md:h-4"></div>
+        <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full max-w-screen-md">
+          {[
+            {
+              href: "https://twitter.com/betteridea_dev",
+              label: "Follow on twitter",
+              Icon: Icons.twitter,
+            },
+            {
+              href: "https://discord.gg/betteridea",
+              label: "Join our Discord",
+              Icon: Icons.discord,
+            },
+            {
+              href: "https://discord.gg/betteridea",
+              label: "Write to us",
+              Icon: Icons.mail,
+            },
+            {
+              href: "https://github.com/betteridea",
+              label: "Make a PR",
+              Icon: Icons.github,
+            },
+          ].map(({ href, label, Icon }, i) => (
+            <a href={href} key={i}>
+              <div className="flex flex-col gap-2 items-center">
+                <Icon />
 
-            <div className="flex flex-row gap-6 items-center">
-              <p>follow us</p>
-
-              <SocialLink href="https://twitter.com/betteridea_dev">
-                <Icons.twitter className="h-4 w-4" fill="white" color="white" />
-              </SocialLink>
-
-              <SocialLink href="https://discord.gg/nm6VKUQBrA">
-                <Icons.discord className="h-4 w-4" />
-                discord
-              </SocialLink>
-            </div>
-
-            <div className="flex flex-row gap-6 items-center justify-center md:justify-start">
-              <p>star github repo</p>
-
-              <SocialLink href="https://github.com/ankushKun/betterIDE">
-                <Icons.github className="h-4 w-4" />
-              </SocialLink>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 w-full max-w-[400px]">
-            <p className="text-center">send us a mail</p>
-
-            <form className="flex flex-col gap-4 bg-[#212121] p-8 rounded-2xl w-full">
-              <label className="form-control w-full">
-                <div className="label">
-                  <span className="label-text text-white">name</span>
-                </div>
-                <input
-                  type="text"
-                  placeholder=""
-                  className="input input-bordered w-full rounded-lg text-black"
-                  ref={nameRef}
-                  required
-                />
-              </label>
-
-              <label className="form-control w-full">
-                <div className="label">
-                  <span className="label-text text-white">query</span>
-                </div>
-                <textarea
-                  className="textarea textarea-bordered h-24 rounded-lg text-black"
-                  placeholder=""
-                  ref={queryRef}
-                  required
-                ></textarea>
-              </label>
-
-              <ActionButton onClick={onQuerySubmit}>Send mail</ActionButton>
-            </form>
-          </div>
+                <p>{label}</p>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
       <footer className="footer footer-center p-10 rounded gap-y-16">
-        <nav className="grid grid-flow-col gap-12">
-          <NavLink href="/" target="_self">
-            Home
-          </NavLink>
-
-          <NavLink href="https://ide.betteridea.dev/">IDE</NavLink>
-
-          <NavLink href="#" target="_self">
-            Team
-          </NavLink>
-        </nav>
-
-        <aside>
-          <a href="/">
-            <div className="flex flex-row gap-4 text-3xl cursor-pointer items-center">
-              <img src="/logo.png" className="h-12 aspect-square" />
-              BetterIDEa
-            </div>
-          </a>
-
-          <div className="h-4"></div>
-
-          <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-        </aside>
+        <p>Copyright {new Date().getFullYear()} © BetterIDEa</p>
       </footer>
     </main>
   );
