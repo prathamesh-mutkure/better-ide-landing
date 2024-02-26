@@ -324,42 +324,36 @@ function App() {
         </div>
       </section>
 
-      <section
-        id="demo"
-        className="flex flex-row justify-center items-center w-full gap-24 py-24 px-8 bg-[#111111]"
-      >
-        <div
-          className="mockup-browser max-w-screen-xl border bg-base-300 flex-grow"
-          data-theme="luxury"
-        >
-          <div className="mockup-browser-toolbar">
-            <div className="input">https://ide.betteridea.dev/</div>
-          </div>
-
-          <div className="flex justify-center w-full aspect-[16/9] bg-base-200">
-            <iframe
-              src="https://ide.betteridea.dev"
-              className="w-full h-full"
-            ></iframe>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 flex-grow text-right">
+      <section id="demo" className="w-full gap-24 py-24 px-8 bg-[#111111]">
+        <div className="container mx-auto flex flex-row justify-between items-center gap-8">
           <div>
-            <h2 className="text-4xl">How it works</h2>
-
-            <hr className="w-[50%]" />
-
-            <div className="text-[#686868] max-w-sm flex flex-col gap-4 text-center lg:text-right">
-              <p>// here&apos;s a tinyyy demo of what you can do</p>
-
-              <p>on BetterIDEa, the more the better</p>
-            </div>
+            <img
+              src="/ide.png"
+              alt="IDE Preview"
+              className="rounded-lg shadow-md max-w-screen-sm"
+            />
           </div>
 
-          <ActionButton className="z-10" href="https://ide.betteridea.dev">
-            Start Building
-          </ActionButton>
+          <div className="flex flex-col gap-4 justify-between max-w-[360px]">
+            <div className="flex flex-col items-end gap-8">
+              <h2 className="text-4xl">How it works</h2>
+
+              <hr className="w-[90%]" />
+
+              <div className="max-w-sm text-center lg:text-right">
+                <p className="text-[#686868] ">
+                  // here&apos;s a tinyyy demo of what you can do <br /> on
+                  BetterIDEa, the more the better
+                </p>
+              </div>
+            </div>
+
+            <div className="flex-grow h-32"></div>
+
+            <ActionButton href="https://ide.betteridea.dev" className="w-auto">
+              Start Building
+            </ActionButton>
+          </div>
         </div>
       </section>
 
@@ -393,18 +387,30 @@ function App() {
             },
           ].map(({ href, label, Icon }, i) => (
             <a href={href} key={i}>
-              <div className="flex flex-col gap-2 items-center">
-                <Icon />
+              <div className="flex flex-col gap-4 items-center w-16 text-center">
+                <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25">
+                  <Icon className="" />
+                </div>
 
-                <p>{label}</p>
+                <p className="text-[14px] text-white/70">{label}</p>
               </div>
             </a>
           ))}
         </div>
       </section>
 
-      <footer className="footer footer-center p-10 rounded gap-y-16">
-        <p>Copyright {new Date().getFullYear()} © BetterIDEa</p>
+      <footer className="p-10 rounded gap-y-16">
+        <div className="container mx-auto text-left">
+          <hr className="h-[1px] w-full bg-[#464646]" />
+
+          <div className="h-6"></div>
+
+          <p className="text-left text-[18px]">
+            Copyright {new Date().getFullYear()} © BetterIDEa
+          </p>
+
+          <div className="h-6"></div>
+        </div>
       </footer>
     </main>
   );
