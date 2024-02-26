@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
