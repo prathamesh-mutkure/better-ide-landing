@@ -1,8 +1,9 @@
-import { SocialLink, Title } from "./App";
+import { SocialLink } from "./App";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Icons } from "./components/icons";
 import { cn } from "./lib/utils";
+import { Title } from "./components/typograpgy";
 
 const teamData: {
   name: string;

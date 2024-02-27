@@ -4,6 +4,7 @@ import { cn } from "./lib/utils";
 import { useRef } from "react";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
+import { Heading, Title, CodeComment } from "./components/typograpgy";
 
 function Card({
   label,
@@ -72,60 +73,6 @@ export function ActionButton(
     >
       {props.children}
     </a>
-  );
-}
-
-export function Title(
-  props: React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
-) {
-  return (
-    <h1
-      {...props}
-      className={cn(
-        "text-5xl lg:text-[84px] z-20 font-bold text-center lg:text-left",
-        props.className
-      )}
-    >
-      {props.children}
-    </h1>
-  );
-}
-
-export function Heading(
-  props: React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  >
-) {
-  return (
-    <h2
-      {...props}
-      className={cn("text-3xl lg:text-4xl text-white", props.className)}
-    >
-      {props.children}
-    </h2>
-  );
-}
-
-function CodeComment(
-  props: React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLParagraphElement>,
-    HTMLParagraphElement
-  >
-) {
-  return (
-    <p
-      {...props}
-      className={cn(
-        "text-[#686868] text-[14px] lg:text-[18px]",
-        props.className
-      )}
-    >
-      {props.children}
-    </p>
   );
 }
 
