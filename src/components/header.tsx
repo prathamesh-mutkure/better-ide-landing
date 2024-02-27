@@ -69,7 +69,7 @@ export function Header() {
             IDE <Icons.arrowLink className="h-4 w-4" />
           </NavLink>
 
-          <NavLink href="#" target="_self">
+          <NavLink href="/team" target="_self">
             Team
           </NavLink>
         </div>

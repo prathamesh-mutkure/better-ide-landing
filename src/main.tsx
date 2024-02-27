@@ -4,11 +4,16 @@ import App from "./App.tsx";
 import { TailwindIndicator } from "./components/tailwind-indicator.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import { TeamPage } from "./Team.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/team",
+    element: <TeamPage />,
   },
 ]);
 
