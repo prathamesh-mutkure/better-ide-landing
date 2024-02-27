@@ -1,5 +1,5 @@
 import { Icons } from "./components/icons";
-import { type LucideIcon } from "lucide-react";
+import { Code, type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
@@ -55,7 +55,7 @@ function NavLink(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "btn btn-ghost hover:underline text-[18px]",
+        "btn btn-ghost hover:underline text-[12px] md:text-[18px]",
         props.className
       )}
     >
@@ -82,6 +82,50 @@ function ActionButton(
     >
       {props.children}
     </a>
+  );
+}
+
+function Heading(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
+) {
+  return (
+    <h2
+      {...props}
+      className={cn("text-3xl lg:text-4xl text-white", props.className)}
+    >
+      {props.children}
+    </h2>
+  );
+}
+
+function CodeComment(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLParagraphElement>,
+    HTMLParagraphElement
+  >
+) {
+  return (
+    <p
+      {...props}
+      className={cn(
+        "text-[#686868] text-[14px] lg:text-[18px]",
+        props.className
+      )}
+    >
+      {props.children}
+    </p>
+  );
+}
+
+function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      {...props}
+      className={cn("h-[1px] w-full bg-[#464646]", props.className)}
+    />
   );
 }
 
@@ -195,16 +239,16 @@ function App() {
                 </ActionButton>
               </div>
 
-              <div className="text-[#686868] max-w-sm flex flex-col gap-4 text-center lg:text-right">
-                <p>
+              <div className="max-w-sm flex flex-col gap-4 text-center lg:text-right">
+                <CodeComment>
                   // build without setting up <br /> extensive dev env from
                   scratch
-                </p>
+                </CodeComment>
 
-                <p>
+                <CodeComment>
                   you focus on writing good code,
                   <br /> we worry about execution, deal?
-                </p>
+                </CodeComment>
               </div>
             </div>
           </div>
@@ -213,19 +257,19 @@ function App() {
 
       <section id="steps" className="relative py-24 px-8 bg-[#111111]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between container mx-auto">
-          <div className="flex flex-col gap-8 text-left">
-            <h2 className="text-4xl">Getting started is as easy as</h2>
+          <div className="flex flex-col gap-8 items-center lg:items-start text-center lg:text-left">
+            <Heading>Getting started is as easy as</Heading>
 
-            <div className="h-[1px] w-[50%] bg-gray-500"></div>
+            <Hr className="w-[50%]"></Hr>
 
-            <p className="text-[#686868]">
+            <CodeComment>
               // BetterIDEa provides a powerful,
               <br />
               and seamless developer experience
               <br />
               that lets you focus, on writing good code
               <br /> without worrying about execution.
-            </p>
+            </CodeComment>
 
             <div className="flex-grow lg:min-h-20"></div>
 
@@ -267,15 +311,15 @@ function App() {
         id="aobook"
         className="relative flex flex-col justify-center items-center gap-8 py-24 px-8 text-black text-center bg-[#F4FEEA]"
       >
-        <h2 className="text-4xl text-center">
+        <Heading className="text-black text-center">
           Introducing <span className="font-bold">AONotebook</span>
-        </h2>
+        </Heading>
 
-        <p className="text-[#686868] text-center text-[18px]">
+        <CodeComment className="text-center">
           // colab-like ease for Actor-Oriented smart contracts.
           <br />
           build powerful dApps faster, with Lua.
-        </p>
+        </CodeComment>
 
         <p className="font-bold text-[24px]">Try a snippet here!</p>
 
@@ -292,7 +336,10 @@ function App() {
               "Ease of Usability",
               "Streamlined Workflows",
             ].map((label, i) => (
-              <div key={i} className="bg-[#BECCB3] px-4 py-1 rounded-3xl">
+              <div
+                key={i}
+                className="bg-[#BECCB3] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px]"
+              >
                 {label}
               </div>
             ))}
@@ -304,7 +351,7 @@ function App() {
 
       <section id="demo" className="w-full gap-24 py-24 px-8 bg-[#111111]">
         <div className="container mx-auto flex flex-row justify-between items-center gap-8">
-          <div className="max-w-screen-sm">
+          <div className="max-w-screen-sm hidden lg:block">
             <img
               src="/ide.png"
               alt="IDE Preview"
@@ -312,17 +359,17 @@ function App() {
             />
           </div>
 
-          <div className="flex flex-col gap-4 justify-between max-w-[360px]">
-            <div className="flex flex-col items-end gap-8">
-              <h2 className="text-4xl">How it works</h2>
+          <div className="flex flex-col gap-4 justify-between max-w-[360px] mx-auto">
+            <div className="flex flex-col items-center lg:items-end gap-8">
+              <Heading className="">How it works</Heading>
 
-              <hr className="w-[90%]" />
+              <Hr className="w-[90%]" />
 
               <div className="max-w-sm text-center lg:text-right">
-                <p className="text-[#686868] ">
+                <CodeComment className="">
                   // here&apos;s a tinyyy demo of what you can do <br /> on
                   BetterIDEa, the more the better
-                </p>
+                </CodeComment>
               </div>
             </div>
 
@@ -339,7 +386,7 @@ function App() {
         id="form"
         className="flex flex-col justify-center items-center w-full gap-12 md:gap-24 py-24 px-8"
       >
-        <h2 className="text-5xl text-center">Reach out to us</h2>
+        <Heading className="text-[36px] text-center">Reach out to us</Heading>
 
         <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full max-w-screen-md">
           {[
@@ -379,11 +426,11 @@ function App() {
 
       <footer className="p-10 rounded gap-y-16">
         <div className="container mx-auto text-left">
-          <hr className="h-[1px] w-full bg-[#464646]" />
+          <Hr className="" />
 
           <div className="h-6"></div>
 
-          <p className="text-left text-[18px]">
+          <p className="text-center lg:text-left text-[18px]">
             Copyright {new Date().getFullYear()} © BetterIDEa
           </p>
 
