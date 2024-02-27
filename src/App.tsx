@@ -55,7 +55,7 @@ function NavLink(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "btn btn-ghost hover:underline text-[12px] md:text-[18px]",
+        "btn btn-ghost hover:underline text-[12px] lg:text-[18px]",
         props.className
       )}
     >
@@ -195,7 +195,7 @@ function App() {
 
             <div className="navbar-center hidden lg:flex"></div>
 
-            <div className="navbar-end gap-8">
+            <div className="navbar-end gap-4 lg:gap-8">
               <NavLink href="/" target="_self">
                 Home
               </NavLink>
