@@ -54,7 +54,10 @@ function NavLink(
       {...props}
       target={props.target ?? "_blank"}
       rel="noreferrer"
-      className={cn("btn btn-ghost hover:underline", props.className)}
+      className={cn(
+        "btn btn-ghost hover:underline text-[18px]",
+        props.className
+      )}
     >
       {props.children}
     </a>
@@ -81,29 +84,6 @@ function ActionButton(
     </a>
   );
 }
-
-// const getStartedData = [
-//   ["explore contract templates", "or begin from scratch"],
-//   [],
-//   ["deploy locally", "or on the mainnet"],
-//   [],
-//   ["test for bugs on local deployment"],
-// ];
-
-// const aoBookData = [
-//   {
-//     title: "Familiar Efficiency",
-//     desc: "Efficiency of Google Colab, providing a familiar structure for on-chain computations with ease.",
-//   },
-//   {
-//     title: "Ease of Usability",
-//     desc: "User-friendly interface, designed for effortless navigation and coding.",
-//   },
-//   {
-//     title: "Streamlined Workflows",
-//     desc: "Thoughtfully streamlined workflows for maximum productivity and creativity.",
-//   },
-// ];
 
 function App() {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -160,7 +140,7 @@ function App() {
                   role="button"
                   className="btn btn-ghost lg:hidden"
                 >
-                  <img className="" src="/logo.png" />
+                  <img className="w-20 h-auto" src="/logo.png" />
                 </div>
               </div>
 
@@ -193,7 +173,7 @@ function App() {
         >
           {/* Create a grid that has two rows on mobile and converts to single row on larger devices */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 container">
-            <h1 className="text-[84px] z-20 font-bold text-center lg:text-left">
+            <h1 className="text-5xl lg:text-[84px] z-20 font-bold text-center lg:text-left">
               One stop env <br />
               for devs
               <br /> on <span className="text-[var(--green)]">Arweave</span>
@@ -252,7 +232,7 @@ function App() {
             <ActionButton className="w-fit">Get Started</ActionButton>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 justify-items-center max-w-[524px] self-center justify-self-end">
+          <div className="hidden lg:grid grid-cols-2 gap-4 justify-items-center max-w-[524px] self-center justify-self-end">
             <div className="justify-self-center self-center">
               <Card
                 label="Code"
@@ -324,11 +304,11 @@ function App() {
 
       <section id="demo" className="w-full gap-24 py-24 px-8 bg-[#111111]">
         <div className="container mx-auto flex flex-row justify-between items-center gap-8">
-          <div>
+          <div className="max-w-screen-sm">
             <img
               src="/ide.png"
               alt="IDE Preview"
-              className="rounded-lg shadow-md max-w-screen-sm"
+              className="rounded-lg shadow-md max-w-full"
             />
           </div>
 
