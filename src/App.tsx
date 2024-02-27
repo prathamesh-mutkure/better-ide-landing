@@ -66,7 +66,7 @@ export function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-6 py-5 bg-[var(--green)] hover:bg-white rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono font-bold",
+        "px-6 py-5 bg-[var(--green)] hover:bg-[#F4FEEA] rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono font-bold",
         props.className
       )}
     >
@@ -135,6 +135,14 @@ export function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
       {...props}
       className={cn("h-[1px] w-full bg-[#464646]", props.className)}
     />
+  );
+}
+
+export function Chip({ label }: { label: string }) {
+  return (
+    <div className="bg-[#BECCB3] hover:bg-[#7C9A7D] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px] text-nowrap cursor-pointer">
+      {label}
+    </div>
   );
 }
 
@@ -327,23 +335,10 @@ function App() {
           </div>
 
           <div className="flex flex-row flex-shrink items-center flex-wrap justify-center gap-x-4 gap-y-2">
-            {[
-              "Familiar Efficiency",
-              "Ease of Usability",
-              "",
-              "Streamlined Workflows",
-            ].map((label, i) =>
-              label === "" ? (
-                <div className="h-0" style={{ flexBasis: "100%" }}></div>
-              ) : (
-                <div
-                  key={i}
-                  className="bg-[#BECCB3] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px] text-nowrap"
-                >
-                  {label}
-                </div>
-              )
-            )}
+            <Chip label="Familiar Efficiency" />
+            <div style={{ flexBasis: "100%" }}></div>
+            <Chip label="Ease of Usability" />
+            <Chip label="Streamlined Workflows" />
           </div>
 
           <div className="hidden lg:block">
