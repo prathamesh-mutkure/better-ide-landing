@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Icons } from "./components/icons";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
 import { ReactNode, useEffect, useRef, useState } from "react";
-// import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
 function Card({
   label,
@@ -162,13 +160,12 @@ function App() {
                   role="button"
                   className="btn btn-ghost lg:hidden"
                 >
-                  <img className="h-6 w-6" src="/logo.png" />
+                  <img className="" src="/logo.png" />
                 </div>
               </div>
 
               <a className="btn btn-ghost text-xl hidden lg:flex">
-                <img className="h-10 w-10" src="/logo.png" />
-                BetterIDEa
+                <img className="" src="/logo.svg" />
               </a>
             </div>
 
