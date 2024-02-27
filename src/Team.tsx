@@ -20,16 +20,16 @@ const teamData: {
       top: 60,
     },
     {
-      name: "Prathamesh Mutkure",
+      name: "Ankush Singh",
       position: "Backend and Architect",
-      twitter: "https://twitter.com/prathamesh_io",
+      twitter: "https://twitter.com/ankushKun_",
       photo: "/team/ankush.png",
       top: 100,
     },
     {
       name: "Prathamesh Mutkure",
       position: "Frontend",
-      twitter: "https://twitter.com/ankushKun_",
+      twitter: "https://twitter.com/prathamesh_io",
       photo: "/team/prathamesh.png",
       top: 60,
     },
@@ -51,10 +51,10 @@ export function TeamPage() {
           <div className="flex flex-row justify-center items-center gap-16">
             {teamData.map(({ name, position, twitter, photo, top }) => (
               <div className="flex flex-col gap-4 text-center items-center">
-                <div className="h-[260px] w-[240px] bg-white rounded-xl relative">
+                <div className="min-h-[260px] w-[240px] rounded-xl relative overflow-clip">
                   <img
                     src={photo}
-                    className={cn("w-full h-auto absolute", `top-[-${top}px]`)}
+                    className={cn("w-full h-full object-cover  overflow-clip", `top-[-${top}px]`)}
                   />
                 </div>
 
