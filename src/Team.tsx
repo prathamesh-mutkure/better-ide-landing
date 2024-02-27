@@ -12,28 +12,28 @@ const teamData: {
   photo: string;
   top: number;
 }[] = [
-  {
-    name: "Farat Kadiwala",
-    position: "Principal Designer",
-    twitter: "https://twitter.com/prathamesh_io",
-    photo: "/team/farat.png",
-    top: 60,
-  },
-  {
-    name: "Prathamesh Mutkure",
-    position: "Backend and Architect",
-    twitter: "https://twitter.com/prathamesh_io",
-    photo: "/team/ankush.png",
-    top: 100,
-  },
-  {
-    name: "Prathamesh Mutkure",
-    position: "Frontend",
-    twitter: "https://twitter.com/prathamesh_io",
-    photo: "/team/prathamesh.png",
-    top: 60,
-  },
-];
+    {
+      name: "Farat Kadiwala",
+      position: "Principal Designer",
+      twitter: "https://twitter.com/farhatkadiwala_",
+      photo: "/team/farat.png",
+      top: 60,
+    },
+    {
+      name: "Prathamesh Mutkure",
+      position: "Backend and Architect",
+      twitter: "https://twitter.com/prathamesh_io",
+      photo: "/team/ankush.png",
+      top: 100,
+    },
+    {
+      name: "Prathamesh Mutkure",
+      position: "Frontend",
+      twitter: "https://twitter.com/ankushKun_",
+      photo: "/team/prathamesh.png",
+      top: 60,
+    },
+  ];
 
 export function TeamPage() {
   return (

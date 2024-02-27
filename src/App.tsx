@@ -55,9 +55,9 @@ export function SocialLink({
   Icon: LucideIcon | ((props: LucideProps) => JSX.Element);
 }) {
   return (
-    <a href={href}>
-      <div className="flex flex-col gap-4 items-center w-16 text-center">
-        <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25 hover:transition-all duration-200">
+    <a href={href} target="_blank">
+      <div className="flex flex-col gap-4 items-center w-16 text-center transition-all duration-200">
+        <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25 transition-all duration-200">
           <Icon />
         </div>
 
@@ -110,27 +110,27 @@ const socialItems: {
   label: string;
   Icon: LucideIcon | ((props: LucideProps) => JSX.Element);
 }[] = [
-  {
-    href: "https://twitter.com/betteridea_dev",
-    label: "Follow on twitter",
-    Icon: Icons.twitter,
-  },
-  {
-    href: "https://discord.gg/betteridea",
-    label: "Join our Discord",
-    Icon: Icons.discord,
-  },
-  {
-    href: "https://discord.gg/betteridea",
-    label: "Write to us",
-    Icon: Icons.mail,
-  },
-  {
-    href: "https://github.com/betteridea",
-    label: "Make a PR",
-    Icon: Icons.github,
-  },
-];
+    {
+      href: "https://twitter.com/betteridea_dev",
+      label: "Follow on twitter",
+      Icon: Icons.twitter,
+    },
+    {
+      href: "https://discord.gg/nm6VKUQBrA",
+      label: "Join our Discord",
+      Icon: Icons.discord,
+    },
+    {
+      href: "mailto:hello@betteridea.dev",
+      label: "Write to us",
+      Icon: Icons.mail,
+    },
+    {
+      href: "https://github.com/ankushKun/betteridea",
+      label: "Make a PR",
+      Icon: Icons.github,
+    },
+  ];
 
 function App() {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -177,9 +177,12 @@ function App() {
 
             <div className="flex flex-col gap-10 items-center lg:items-end">
               <div className="flex flex-row gap-4 items-center justify-end">
-                <button className="btn rounded-3xl h-full w-auto">
-                  <Icons.actionButton className="h-6 w-6" />
-                </button>
+                <a className="btn rounded-3xl h-full w-auto"
+                  href="https://www.youtube.com/watch?v=HoE1zj9esMg" target="_blank">
+                  <button>
+                    <Icons.actionButton className="h-6 w-6" />
+                  </button>
+                </a>
 
                 <ActionButton
                   className="z-10"
@@ -223,7 +226,7 @@ function App() {
 
             <div className="flex-grow lg:min-h-20"></div>
 
-            <ActionButton className="w-fit">Get Started</ActionButton>
+            <ActionButton href="https://ide.betteridea.dev" className="w-fit">Get Started</ActionButton>
           </div>
 
           <div className="hidden lg:grid grid-cols-2 gap-4 justify-items-center max-w-[524px] self-center justify-self-end">
