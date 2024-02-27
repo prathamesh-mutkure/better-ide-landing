@@ -126,7 +126,7 @@ const socialItems: {
       Icon: Icons.mail,
     },
     {
-      href: "https://github.com/ankushKun/betteridea",
+      href: "https://github.com/ankushKun/betteride",
       label: "Make a PR",
       Icon: Icons.github,
     },
