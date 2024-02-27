@@ -14,7 +14,7 @@ export function NavLink(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "btn btn-ghost hover:underline text-[12px] lg:text-[18px]",
+        "btn btn-ghost hover:bg-transparent hover:underline text-[12px] lg:text-[18px] hover:transition-all duration-150",
         props.className
       )}
     >
@@ -43,7 +43,7 @@ export function Header() {
       <div
         className={cn(
           "navbar w-full md:px-8 md:py-4 lg:px-12 lg:py-6",
-          color && "bg-white/15"
+          color && "bg-black/50"
         )}
       >
         <div className="navbar-start">

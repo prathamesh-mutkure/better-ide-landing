@@ -11,22 +11,34 @@ function Card({
   Icon,
   text,
   gradient = "",
+  gradientTemp = "text-white",
 }: {
   label: string;
   Icon: LucideIcon;
   text: string;
   gradient?: string;
+  gradientTemp?: string;
 }) {
   return (
     <div
       className={cn(
-        "bg-[#191919] flex flex-col justify-center items-center gap-6 h-[190px] w-[240px] cursor-pointer transition-all p-4 rounded-2xl border border-[#686868] hover:bg-white/15"
-        // gradient
+        "group bg-[#191919] flex flex-col justify-center items-center gap-6 h-[190px] w-[240px] cursor-pointer p-4 rounded-2xl border border-[#686868] hover:bg-white/15",
+        "hover:transition-all duration-200"
       )}
     >
-      <h3 className="text-[28px] font-bold">{label}</h3>
+      <h3 className="group-hover:hidden text-[28px] font-bold hover:transition-all duration-200">
+        {label}
+      </h3>
 
-      <Icon className="h-8 w-8" />
+      <div>
+        <Icon
+          className={cn(
+            "h-8 w-8 group-hover:h-12 group-hover:w-12",
+            `group-hover:${gradientTemp}`,
+            "hover:transition-all duration-200"
+          )}
+        />
+      </div>
 
       <p className="text-[20px]">{text}</p>
     </div>
@@ -45,7 +57,7 @@ export function SocialLink({
   return (
     <a href={href}>
       <div className="flex flex-col gap-4 items-center w-16 text-center">
-        <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25">
+        <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25 hover:transition-all duration-200">
           <Icon />
         </div>
 
@@ -67,7 +79,7 @@ export function ActionButton(
       target={props.target ?? "_blank"}
       rel="noreferrer"
       className={cn(
-        "px-6 py-5 bg-[var(--green)] hover:bg-[#F4FEEA] rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono font-bold",
+        "px-6 py-5 bg-[var(--green)] hover:bg-[#F4FEEA] rounded-3xl cursor-pointer text-center text-2xl text-[#212121] font-mono font-bold hover:transition-all duration-200",
         props.className
       )}
     >
@@ -87,7 +99,7 @@ export function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
 
 export function Chip({ label }: { label: string }) {
   return (
-    <div className="bg-[#BECCB3] hover:bg-[#7C9A7D] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px] text-nowrap cursor-pointer">
+    <div className="bg-[#BECCB3] hover:bg-[#7C9A7D] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px] text-nowrap cursor-pointer hover:transition-all duration-200">
       {label}
     </div>
   );
@@ -220,6 +232,7 @@ function App() {
                 label="Code"
                 Icon={Icons.code}
                 gradient="bg-[linear-gradient(166.68deg,_#2F0368_48.22%,_#E28BAA_98.47%,_#FA4888_98.47%)]"
+                gradientTemp="text-blue-400"
                 text="Craft clean code."
               />
             </div>
@@ -229,6 +242,7 @@ function App() {
                 label="Deploy"
                 Icon={Icons.deploy}
                 gradient="bg-[linear-gradient(85.45deg,_#033168_33.65%,_#008D7C_92.6%)]"
+                gradientTemp="text-blue-400"
                 text="Deploy frictionlessly"
               />
             </div>
@@ -238,6 +252,7 @@ function App() {
                 label="Test"
                 Icon={Icons.test}
                 gradient="bg-[linear-gradient(177.94deg,_#BC8700_47.8%,_#FAC848_105.69%)]"
+                gradientTemp="text-blue-400"
                 text="Debug & Iterate"
               />
             </div>
