@@ -211,7 +211,7 @@ function App() {
             <div className="flex flex-col gap-10 items-center lg:items-end">
               <div className="flex flex-row gap-4 items-center justify-end">
                 <button className="btn rounded-3xl h-full w-auto">
-                  <Icons.plusCircle className="h-6 w-6" />
+                  <Icons.actionButton className="h-6 w-6" />
                 </button>
 
                 <ActionButton
@@ -310,25 +310,56 @@ function App() {
           <img src="/demo.png" className="w-full max-w-screen-lg" />
         </div>
 
-        <div className="flex flex-row my-8">
-          <div></div>
+        <div className="flex flex-row my-8 items-center gap-12">
+          <div className="hidden lg:block">
+            <svg
+              width="100%"
+              height="6"
+              viewBox="0 0 180 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.113249 3L3 5.88675L5.88675 3L3 0.113249L0.113249 3ZM179 3.49998L179.5 3.49998L179.5 2.49998L179 2.49998L179 3.49998ZM3 3.5L179 3.49998L179 2.49998L3 2.5L3 3.5Z"
+                fill="#686868"
+              />
+            </svg>
+          </div>
 
-          <div className="flex flex-row items-center justify-center gap-4">
+          <div className="flex flex-row flex-shrink items-center flex-wrap justify-center gap-x-4 gap-y-2">
             {[
               "Familiar Efficiency",
               "Ease of Usability",
+              "",
               "Streamlined Workflows",
-            ].map((label, i) => (
-              <div
-                key={i}
-                className="bg-[#BECCB3] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px]"
-              >
-                {label}
-              </div>
-            ))}
+            ].map((label, i) =>
+              label === "" ? (
+                <div className="h-0" style={{ flexBasis: "100%" }}></div>
+              ) : (
+                <div
+                  key={i}
+                  className="bg-[#BECCB3] px-4 py-1 rounded-3xl text-[16px] lg:text-[22px] text-nowrap"
+                >
+                  {label}
+                </div>
+              )
+            )}
           </div>
 
-          <div></div>
+          <div className="hidden lg:block">
+            <svg
+              width="100%"
+              height="6"
+              viewBox="0 0 179 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M178.887 2.99998L176 0.113233L173.113 2.99998L176 5.88674L178.887 2.99998ZM4.37114e-08 3.5L176 3.49998L176 2.49998L-4.37114e-08 2.5L4.37114e-08 3.5Z"
+                fill="#686868"
+              />
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -342,7 +373,7 @@ function App() {
             />
           </div>
 
-          <div className="flex flex-col gap-4 justify-between max-w-[360px] mx-auto">
+          <div className="flex flex-col gap-4 justify-between max-w-[380px] mx-auto">
             <div className="flex flex-col items-center lg:items-end gap-8">
               <Heading className="">How it works</Heading>
 
@@ -369,7 +400,39 @@ function App() {
         id="form"
         className="flex flex-col justify-center items-center w-full gap-12 md:gap-24 py-24 px-8"
       >
-        <Heading className="text-[36px] text-center">Reach out to us</Heading>
+        <div className="flex flex-row my-8 items-center gap-8">
+          <div className="hidden lg:block">
+            <svg
+              width="100%"
+              height="6"
+              viewBox="0 0 180 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.113249 3L3 5.88675L5.88675 3L3 0.113249L0.113249 3ZM179 3.49998L179.5 3.49998L179.5 2.49998L179 2.49998L179 3.49998ZM3 3.5L179 3.49998L179 2.49998L3 2.5L3 3.5Z"
+                fill="#686868"
+              />
+            </svg>
+          </div>
+
+          <Heading className="text-[36px] text-center">Reach out to us</Heading>
+
+          <div className="hidden lg:block">
+            <svg
+              width="100%"
+              height="6"
+              viewBox="0 0 179 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M178.887 2.99998L176 0.113233L173.113 2.99998L176 5.88674L178.887 2.99998ZM4.37114e-08 3.5L176 3.49998L176 2.49998L-4.37114e-08 2.5L4.37114e-08 3.5Z"
+                fill="#686868"
+              />
+            </svg>
+          </div>
+        </div>
 
         <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full max-w-screen-md">
           {socialItems.map(({ href, label, Icon }, i) => (
