@@ -1,7 +1,9 @@
 import { Icons } from "./components/icons";
-import { Code, type LucideIcon } from "lucide-react";
+import { LucideProps, type LucideIcon } from "lucide-react";
 import { cn } from "./lib/utils";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 
 function Card({
   label,
@@ -30,41 +32,29 @@ function Card({
   );
 }
 
-function SocialLink({ href, children }: { href: string; children: ReactNode }) {
+export function SocialLink({
+  href,
+  label,
+  Icon,
+}: {
+  label: string;
+  href: string;
+  Icon: LucideIcon | ((props: LucideProps) => JSX.Element);
+}) {
   return (
-    <a
-      className="rounded-2xl bg-black hover:bg-white/20 text-white border border-[#4C4C4C] px-4 py-1.5 text-sm font-medium z-20 flex flex-row gap-2 items-center"
-      href={href}
-      target="_blank"
-      rel="noreferer"
-    >
-      {children}
+    <a href={href}>
+      <div className="flex flex-col gap-4 items-center w-16 text-center">
+        <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25">
+          <Icon />
+        </div>
+
+        <p className="text-[14px] text-white/70">{label}</p>
+      </div>
     </a>
   );
 }
 
-function NavLink(
-  props: React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  >
-) {
-  return (
-    <a
-      {...props}
-      target={props.target ?? "_blank"}
-      rel="noreferrer"
-      className={cn(
-        "btn btn-ghost hover:underline text-[12px] lg:text-[18px]",
-        props.className
-      )}
-    >
-      {props.children}
-    </a>
-  );
-}
-
-function ActionButton(
+export function ActionButton(
   props: React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
@@ -85,7 +75,26 @@ function ActionButton(
   );
 }
 
-function Heading(
+export function Title(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
+) {
+  return (
+    <h1
+      {...props}
+      className={cn(
+        "text-5xl lg:text-[84px] z-20 font-bold text-center lg:text-left",
+        props.className
+      )}
+    >
+      {props.children}
+    </h1>
+  );
+}
+
+export function Heading(
   props: React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
@@ -120,7 +129,7 @@ function CodeComment(
   );
 }
 
-function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
+export function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       {...props}
@@ -129,23 +138,36 @@ function Hr(props: React.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
+const socialItems: {
+  href: string;
+  label: string;
+  Icon: LucideIcon | ((props: LucideProps) => JSX.Element);
+}[] = [
+  {
+    href: "https://twitter.com/betteridea_dev",
+    label: "Follow on twitter",
+    Icon: Icons.twitter,
+  },
+  {
+    href: "https://discord.gg/betteridea",
+    label: "Join our Discord",
+    Icon: Icons.discord,
+  },
+  {
+    href: "https://discord.gg/betteridea",
+    label: "Write to us",
+    Icon: Icons.mail,
+  },
+  {
+    href: "https://github.com/betteridea",
+    label: "Make a PR",
+    Icon: Icons.github,
+  },
+];
+
 function App() {
   const nameRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLTextAreaElement>(null);
-
-  const [color, setcolor] = useState(false);
-
-  function changeNavBg() {
-    window.scrollY >= 90 ? setcolor(true) : setcolor(false);
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", changeNavBg);
-
-    return () => {
-      window.removeEventListener("scroll", changeNavBg);
-    };
-  }, []);
 
   // TODO: Integrate API and toast
   async function onQuerySubmit() {
@@ -170,46 +192,7 @@ function App() {
   return (
     <main className="relative bg-[#111111] text-white" data-theme="light">
       <div className="h-screen w-screen flex flex-col items-center justify-center">
-        <header className="w-full fixed top-0 left-0 right-0 z-20">
-          <div
-            className={cn(
-              "navbar w-full md:px-8 md:py-4 lg:px-12 lg:py-6",
-              color && "bg-white/15"
-            )}
-          >
-            <div className="navbar-start">
-              <div className="dropdown">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost lg:hidden"
-                >
-                  <img className="w-20 h-auto" src="/logo.png" />
-                </div>
-              </div>
-
-              <a className="btn btn-ghost text-xl hidden lg:flex">
-                <img className="" src="/logo.svg" />
-              </a>
-            </div>
-
-            <div className="navbar-center hidden lg:flex"></div>
-
-            <div className="navbar-end gap-4 lg:gap-8">
-              <NavLink href="/" target="_self">
-                Home
-              </NavLink>
-
-              <NavLink href="https://ide.betteridea.dev/">
-                IDE <Icons.arrowLink className="h-4 w-4" />
-              </NavLink>
-
-              <NavLink href="#" target="_self">
-                Team
-              </NavLink>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <section
           id="hero"
@@ -217,11 +200,11 @@ function App() {
         >
           {/* Create a grid that has two rows on mobile and converts to single row on larger devices */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 container">
-            <h1 className="text-5xl lg:text-[84px] z-20 font-bold text-center lg:text-left">
+            <Title className="">
               One stop env <br />
               for devs
               <br /> on <span className="text-[var(--green)]">Arweave</span>
-            </h1>
+            </Title>
 
             <div className="h-20 lg:hidden"></div>
 
@@ -389,54 +372,13 @@ function App() {
         <Heading className="text-[36px] text-center">Reach out to us</Heading>
 
         <div className="flex flex-row flex-wrap justify-evenly gap-12 md:gap-4 w-full max-w-screen-md">
-          {[
-            {
-              href: "https://twitter.com/betteridea_dev",
-              label: "Follow on twitter",
-              Icon: Icons.twitter,
-            },
-            {
-              href: "https://discord.gg/betteridea",
-              label: "Join our Discord",
-              Icon: Icons.discord,
-            },
-            {
-              href: "https://discord.gg/betteridea",
-              label: "Write to us",
-              Icon: Icons.mail,
-            },
-            {
-              href: "https://github.com/betteridea",
-              label: "Make a PR",
-              Icon: Icons.github,
-            },
-          ].map(({ href, label, Icon }, i) => (
-            <a href={href} key={i}>
-              <div className="flex flex-col gap-4 items-center w-16 text-center">
-                <div className="bg-black w-[52px] h-[44px] rounded-full flex items-center justify-center shadow-white/50 shadow-inner hover:shadow-lg hover:shadow-white/25">
-                  <Icon className="" />
-                </div>
-
-                <p className="text-[14px] text-white/70">{label}</p>
-              </div>
-            </a>
+          {socialItems.map(({ href, label, Icon }, i) => (
+            <SocialLink href={href} label={label} Icon={Icon} key={i} />
           ))}
         </div>
       </section>
 
-      <footer className="p-10 rounded gap-y-16">
-        <div className="container mx-auto text-left">
-          <Hr className="" />
-
-          <div className="h-6"></div>
-
-          <p className="text-center lg:text-left text-[18px]">
-            Copyright {new Date().getFullYear()} © BetterIDEa
-          </p>
-
-          <div className="h-6"></div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
